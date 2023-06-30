@@ -12,13 +12,11 @@ let twitch =
 
 async function test() {
   const browser = await launch({
-    executablePath:
-      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    defaultViewport: {
-      width: 1920,
-      height: 1080,
-    },
-  })
+		defaultViewport: {
+			width: 1920,
+			height: 1080,
+		},
+	});
 
   const page = await browser.newPage()
   await page.goto('https://nuto.education')

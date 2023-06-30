@@ -11,7 +11,7 @@ const getExecutablePath = () => {
 
   let executablePath;
   if (process.platform === 'linux') {
-    executablePath = '/usr/bin/chromium-browser';
+    executablePath = '/usr/bin/google-chrome';
   } else if (process.platform === 'darwin') {
     executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
   } else if (process.platform === 'win32') {
@@ -36,10 +36,8 @@ let twitch =
 async function test() {
   const browser = await launch({
     executablePath: getExecutablePath(),
-		defaultViewport: {
-			width: 1920,
-			height: 1080,
-		},
+    headless: false,
+    args: ['--no-sandbox']
 	});
 
   const page = await browser.newPage()

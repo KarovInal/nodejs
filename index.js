@@ -1,12 +1,13 @@
 const { launch, getStream } = require('puppeteer-stream')
-const { exec } = require('child_process')
-
-const child_process = require('child_process');
+const child_process = require('child_process')
+const {exec} = require('child_process')
 
 const getExecutablePath = () => {
   if (process.env.CHROME_BIN) {
     return process.env.CHROME_BIN;
   }
+
+  console.log('process.platform', process.platform)
 
   let executablePath;
   if (process.platform === 'linux') {
@@ -30,6 +31,7 @@ const getExecutablePath = () => {
     throw new Error('Unsupported platform: ' + process.platform);
   }
 
+  console.log('executablePath', executablePath)
   return executablePath;
 };
 

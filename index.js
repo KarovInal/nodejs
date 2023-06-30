@@ -7,11 +7,20 @@ const getExecutablePath = () => {
     return process.env.CHROME_BIN;
   }
 
-  console.log('process.platform', process.platform)
-
   let executablePath;
   if (process.platform === 'linux') {
-    executablePath = '/usr/bin/chromium-browser';
+    try {
+      executablePath = child_process.execSync('which chromium-browser').toString().split('\n').shift();
+    } catch (e) {
+      // NOOP
+    }
+
+    if (!executablePath) {
+      executablePath = child_process.execSync('which chromium').toString().split('\n').shift();
+      if (!executablePath) {
+        throw new Error('Chromium not found (which chromium)');
+      }
+    }
   } else if (process.platform === 'darwin') {
     executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
   } else if (process.platform === 'win32') {
@@ -20,7 +29,6 @@ const getExecutablePath = () => {
     throw new Error('Unsupported platform: ' + process.platform);
   }
 
-  console.log('executablePath', executablePath)
   return executablePath;
 };
 

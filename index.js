@@ -1,5 +1,6 @@
 const { launch, getStream } = require('puppeteer-stream')
 const { exec } = require('child_process')
+const {executablePath} = require('puppeteer')
 
 // puppeteer stream + FFmpeg example: https://github.com/Flam3rboy/puppeteer-stream/blob/main/examples/ffmpeg.js
 
@@ -12,11 +13,13 @@ let twitch =
 
 async function test() {
   const browser = await launch({
-		defaultViewport: {
-			width: 1920,
-			height: 1080,
-		},
-	});
+  	args: ['--no-sandbox',],
+  	executablePath: executablePath(),
+	defaultViewport: {
+		width: 1920,
+		height: 1080,
+	},
+});
 
   const page = await browser.newPage()
   await page.goto('https://nuto.education')

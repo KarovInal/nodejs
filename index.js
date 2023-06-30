@@ -37,7 +37,7 @@ async function test() {
   const browser = await launch({
     executablePath: getExecutablePath(),
     headless: false,
-    args: ['--no-sandbox']
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});
 
   const page = await browser.newPage()

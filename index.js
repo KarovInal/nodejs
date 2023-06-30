@@ -12,14 +12,7 @@ let twitch =
   'rtmps://dc4-1.rtmp.t.me/s/1714692839:9KI2gwSXzfuL3JI65HtbyQ'
 
 async function test() {
-  const browser = await launch({
-  	args: ['--no-sandbox',],
-  	executablePath: executablePath(),
-	defaultViewport: {
-		width: 1920,
-		height: 1080,
-	},
-});
+  const browser = await launch({});
 
   const page = await browser.newPage()
   await page.goto('https://nuto.education')

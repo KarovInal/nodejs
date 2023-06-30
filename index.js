@@ -11,18 +11,7 @@ const getExecutablePath = () => {
 
   let executablePath;
   if (process.platform === 'linux') {
-    try {
-      executablePath = child_process.execSync('which chromium-browser').toString().split('\n').shift();
-    } catch (e) {
-      // NOOP
-    }
-
-    if (!executablePath) {
-      executablePath = child_process.execSync('which chromium').toString().split('\n').shift();
-      if (!executablePath) {
-        throw new Error('Chromium not found (which chromium)');
-      }
-    }
+    executablePath = '/usr/bin/google-chrome';
   } else if (process.platform === 'darwin') {
     executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
   } else if (process.platform === 'win32') {

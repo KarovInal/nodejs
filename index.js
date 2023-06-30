@@ -11,7 +11,7 @@ const getExecutablePath = () => {
 
   let executablePath;
   if (process.platform === 'linux') {
-    executablePath = '/usr/bin/google-chrome';
+    executablePath = '/usr/bin/chromium-browser';
   } else if (process.platform === 'darwin') {
     executablePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
   } else if (process.platform === 'win32') {

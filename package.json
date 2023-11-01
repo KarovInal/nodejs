@@ -6,7 +6,7 @@
   "author": "alphasec",
   "license": "MIT",
    "dependencies": {
-     "puppeteer": "^20.7.4",
+     "puppeteer": "^21.4.1",
      "puppeteer-screen-recorder": "^2.1.2",
      "puppeteer-stream": "^3.0.5"
   },
